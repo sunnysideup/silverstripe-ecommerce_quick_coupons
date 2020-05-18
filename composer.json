@@ -1,0 +1,30 @@
+{
+    "name": "sunnysideup/ecommerce_quick_coupons",
+    "type": "silverstripe-module",
+    "description": "Allows coupons for particular products to be added quickly!",
+    "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "ecommerce",
+        "e-commerce",
+        "xml",
+        "shop",
+        "feed"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Shane Watters",
+            "email": "shane@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "sunnysideup/ecommerce": ">=11.0",
+        "sunnysideup/ecommerce_discount_coupon": "dev-master"
+    },
+    "extra": {
+        "installer-name": "ecommerce_quick_coupons"
+    }
+}
