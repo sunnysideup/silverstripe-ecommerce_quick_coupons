@@ -26,5 +26,7 @@
     },
     "extra": {
         "installer-name": "ecommerce_quick_coupons"
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
