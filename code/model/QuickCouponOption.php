@@ -211,3 +211,4 @@ class QuickCouponOption extends DiscountCouponOption
         return 'coupons@' . $baseURL;
     }
 }
+

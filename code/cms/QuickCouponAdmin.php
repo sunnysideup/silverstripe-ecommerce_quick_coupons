@@ -58,3 +58,4 @@ class QuickCouponAdmin extends ModelAdmin
         return $form;
     }
 }
+
