@@ -1,5 +1,28 @@
 <?php
 
+namespace Sunnysideup\EcommerceQuickCoupons\Model;
+
+
+
+
+
+
+
+
+
+
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\ORM\DB;
+use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
+use SilverStripe\Control\Director;
+use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
+
+
+
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *@author shane [at] sunnysideup.co.nz
@@ -53,7 +76,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -66,7 +89,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -79,7 +102,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -94,7 +117,7 @@ class QuickCouponOption extends DiscountCouponOption
      *
      * @return boolean
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         if ($this->UseCount()) {
             return false;
@@ -211,3 +234,4 @@ class QuickCouponOption extends DiscountCouponOption
         return 'coupons@' . $baseURL;
     }
 }
+

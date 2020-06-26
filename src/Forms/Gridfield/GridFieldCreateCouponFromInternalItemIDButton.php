@@ -1,4 +1,30 @@
 <?php
+
+namespace Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield;
+
+
+
+
+
+
+
+
+
+
+
+use Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Forms\FieldList;
+use Sunnysideup\Ecommerce\Pages\Product;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Core\Config\Config;
+use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridField_ActionProvider;
+
+
 /**
  * A modal search dialog which uses search context to search for and add
  * existing records to a grid field.
@@ -11,7 +37,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 	 *
 	 * @var string $itemClass
 	 */
-	protected $itemClass = 'GridFieldCreateCouponFromInternalItemIDButton';
+	protected $itemClass = GridFieldCreateCouponFromInternalItemIDButton::class;
 	
 	/**
 	 * @return string
@@ -52,7 +78,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 		$forTemplate = new ArrayData(array());
 		$forTemplate->Fields = new FieldList();
 
-		$productField = TextField::create('InternalItemID', "Product");
+		$productField = TextField::create('InternalItemID', Product::class);
 		$productField->setAttribute('placeholder', 'Internal Item ID');
 		$productField->setAttribute('required', true);
 
@@ -71,7 +97,16 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 		}
 
 		return array(
-			$this->targetFragment => $forTemplate->renderWith($this->itemClass)
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: ->RenderWith( (ignore case)
+  * NEW: ->RenderWith( (COMPLEX)
+  * EXP: Check that the template location is still valid!
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+			$this->targetFragment => $forTemplate->RenderWith($this->itemClass)
 		);
 	}
 
@@ -116,3 +151,4 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 		];
 	}
 }
+

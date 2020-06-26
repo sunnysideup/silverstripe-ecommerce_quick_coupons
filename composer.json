@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/ecommerce_quick_coupons",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Allows coupons for particular products to be added quickly!",
     "keywords": [
         "Silverstripe-CMS",
@@ -22,11 +22,15 @@
     ],
     "require": {
         "sunnysideup/ecommerce": ">=11.0",
-        "sunnysideup/ecommerce_discount_coupon": "dev-master"
+        "sunnysideup/ecommerce_discount_coupon": "dev-master",
+        "silverstripe/recipe-cms": "^4.4"
     },
-    "extra": {
-        "installer-name": "ecommerce_quick_coupons"
-    },
+    "extra": [],
     "prefer-stable": true,
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\EcommerceQuickCoupons\\": "src/"
+        }
+    }
 }

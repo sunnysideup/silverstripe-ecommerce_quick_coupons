@@ -1,0 +1,5 @@
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    QuickCouponAdmin: Sunnysideup\EcommerceQuickCoupons\Cms\QuickCouponAdmin
+    GridFieldCreateCouponFromInternalItemIDButton: Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton
+    QuickCouponOption: Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption

@@ -1,5 +1,22 @@
 <?php
 
+namespace Sunnysideup\EcommerceQuickCoupons\Cms;
+
+
+
+
+
+
+
+use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldExportButton;
+use SilverStripe\Forms\GridField\GridFieldPrintButton;
+use Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton;
+use SilverStripe\Admin\ModelAdmin;
+
+
+
 class QuickCouponAdmin extends ModelAdmin
 {
     /**
@@ -58,3 +75,4 @@ class QuickCouponAdmin extends ModelAdmin
         return $form;
     }
 }
+
