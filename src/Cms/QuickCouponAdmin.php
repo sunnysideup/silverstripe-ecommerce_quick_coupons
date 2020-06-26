@@ -2,12 +2,19 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Cms;
 
-use ModelAdmin;
-use QuickCouponOption;
-use GridField;
-use GridFieldExportButton;
-use GridFieldPrintButton;
-use GridFieldCreateCouponFromInternalItemIDButton;
+
+
+
+
+
+
+use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldExportButton;
+use SilverStripe\Forms\GridField\GridFieldPrintButton;
+use Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton;
+use SilverStripe\Admin\ModelAdmin;
+
 
 
 class QuickCouponAdmin extends ModelAdmin

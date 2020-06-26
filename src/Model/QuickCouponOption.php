@@ -2,15 +2,25 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Model;
 
-use DiscountCouponOption;
-use Member;
-use Permission;
-use Config;
-use LiteralField;
-use Tab;
-use DB;
-use PermissionProviderFactory;
-use Director;
+
+
+
+
+
+
+
+
+
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\ORM\DB;
+use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
+use SilverStripe\Control\Director;
+use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
+
 
 
 /**

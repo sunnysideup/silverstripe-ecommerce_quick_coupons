@@ -2,16 +2,28 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield;
 
-use GridField_HTMLProvider;
-use GridField_ActionProvider;
-use ArrayData;
-use FieldList;
-use TextField;
-use GridField_FormAction;
-use GridField;
-use Product;
-use Config;
-use QuickCouponOption;
+
+
+
+
+
+
+
+
+
+
+use Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Forms\FieldList;
+use Sunnysideup\Ecommerce\Pages\Product;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Core\Config\Config;
+use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridField_ActionProvider;
+
 
 /**
  * A modal search dialog which uses search context to search for and add
@@ -25,7 +37,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 	 *
 	 * @var string $itemClass
 	 */
-	protected $itemClass = 'GridFieldCreateCouponFromInternalItemIDButton';
+	protected $itemClass = GridFieldCreateCouponFromInternalItemIDButton::class;
 	
 	/**
 	 * @return string
@@ -66,7 +78,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 		$forTemplate = new ArrayData(array());
 		$forTemplate->Fields = new FieldList();
 
-		$productField = TextField::create('InternalItemID', "Product");
+		$productField = TextField::create('InternalItemID', Product::class);
 		$productField->setAttribute('placeholder', 'Internal Item ID');
 		$productField->setAttribute('required', true);
 
