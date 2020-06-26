@@ -25,9 +25,7 @@
         "sunnysideup/ecommerce_discount_coupon": "dev-master",
         "silverstripe/recipe-cms": "^4.4"
     },
-    "extra": {
-        "installer-name": "ecommerce_quick_coupons"
-    },
+    "extra": [],
     "prefer-stable": true,
     "minimum-stability": "dev"
 }
