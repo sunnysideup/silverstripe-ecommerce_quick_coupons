@@ -53,7 +53,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -66,7 +66,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canView($member = null)
+    public function canView($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -79,7 +79,7 @@ class QuickCouponOption extends DiscountCouponOption
      * @param Member $member | NULL
      * @return boolean
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null, $context = [])
     {
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
@@ -94,7 +94,7 @@ class QuickCouponOption extends DiscountCouponOption
      *
      * @return boolean
      */
-    public function canDelete($member = null)
+    public function canDelete($member = null, $context = [])
     {
         if ($this->UseCount()) {
             return false;
