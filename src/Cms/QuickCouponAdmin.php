@@ -1,5 +1,15 @@
 <?php
 
+namespace Sunnysideup\EcommerceQuickCoupons\Cms;
+
+use ModelAdmin;
+use QuickCouponOption;
+use GridField;
+use GridFieldExportButton;
+use GridFieldPrintButton;
+use GridFieldCreateCouponFromInternalItemIDButton;
+
+
 class QuickCouponAdmin extends ModelAdmin
 {
     /**

@@ -1,4 +1,18 @@
 <?php
+
+namespace Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield;
+
+use GridField_HTMLProvider;
+use GridField_ActionProvider;
+use ArrayData;
+use FieldList;
+use TextField;
+use GridField_FormAction;
+use GridField;
+use Product;
+use Config;
+use QuickCouponOption;
+
 /**
  * A modal search dialog which uses search context to search for and add
  * existing records to a grid field.

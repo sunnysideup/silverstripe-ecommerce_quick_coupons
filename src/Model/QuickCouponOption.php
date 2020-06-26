@@ -1,5 +1,18 @@
 <?php
 
+namespace Sunnysideup\EcommerceQuickCoupons\Model;
+
+use DiscountCouponOption;
+use Member;
+use Permission;
+use Config;
+use LiteralField;
+use Tab;
+use DB;
+use PermissionProviderFactory;
+use Director;
+
+
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *@author shane [at] sunnysideup.co.nz
