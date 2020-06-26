@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/ecommerce_quick_coupons",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Allows coupons for particular products to be added quickly!",
     "keywords": [
         "Silverstripe-CMS",
