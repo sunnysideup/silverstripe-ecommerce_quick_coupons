@@ -2,26 +2,15 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Model;
 
-
-
-
-
-
-
-
-
-
-use SilverStripe\Security\Member;
-use SilverStripe\Security\Permission;
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\DB;
-use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
-use SilverStripe\Control\Director;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
 use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
-
-
+use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
 
 /**
  *@author nicolaas [at] sunnysideup.co.nz
@@ -47,15 +36,14 @@ class QuickCouponOption extends DiscountCouponOption
         'CreatedBy' => Member::class,
     ];
 
-     /**
+    /**
      * standard SS variable
-     *
      */
     private static $searchable_fields = [
         'Title' => 'PartialMatchFilter',
-        "Code" => "PartialMatchFilter",
+        'Code' => 'PartialMatchFilter',
         'DiscountAbsolute' => 'ExactMatchFilter',
-        'DiscountPercentage' => 'ExactMatchFilter'
+        'DiscountPercentage' => 'ExactMatchFilter',
     ];
 
     /**
@@ -208,7 +196,7 @@ class QuickCouponOption extends DiscountCouponOption
         DB::alteration_message('Creating Coupon Manager Group', 'created');
         $email = Config::inst()->get(QuickCouponOption::class, 'manager_email');
         $email = $email ?: $this->getDefaultEmail();
-        $group = PermissionProviderFactory::inst()
+        return PermissionProviderFactory::inst()
             ->setEmail($email)
             ->setFirstName('Coupon')
             ->setSurname('Manager')
@@ -234,4 +222,3 @@ class QuickCouponOption extends DiscountCouponOption
         return 'coupons@' . $baseURL;
     }
 }
-
