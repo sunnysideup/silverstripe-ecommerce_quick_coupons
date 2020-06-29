@@ -49,8 +49,8 @@ class QuickCouponAdmin extends ModelAdmin
 
     /**
      * @param int $id
-     * @param FieldList $fields
-     * @return Form
+     * @param \SilverStripe\Forms\FieldList $fields
+     * @return \SilverStripe\Forms\Form
      */
     public function getEditForm($id = null, $fields = null)
     {
