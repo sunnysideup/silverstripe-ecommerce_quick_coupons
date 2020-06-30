@@ -45,7 +45,7 @@ class QuickCouponAdmin extends ModelAdmin
      *
      * @var string
      */
-    private static $menu_icon = 'ecommerce/images/icons/money-file.gif';
+    private static $menu_icon = 'vendor/sunnysideup/ecommerce/client/images/icons/money-file.gif';
 
     /**
      * @param int $id
