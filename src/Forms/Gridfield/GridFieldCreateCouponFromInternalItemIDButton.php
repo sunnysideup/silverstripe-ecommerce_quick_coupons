@@ -85,21 +85,13 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
             $forTemplate->Fields->setForm($form);
         }
 
-        return [
 
-            /**
-             * ### @@@@ START REPLACEMENT @@@@ ###
-             * WHY: automated upgrade
-             * OLD: ->RenderWith( (ignore case)
-             * NEW: ->RenderWith( (COMPLEX)
-             * EXP: Check that the template location is still valid!
-             * ### @@@@ STOP REPLACEMENT @@@@ ###
-             */
+        return [
             $this->targetFragment => $forTemplate->RenderWith($this->itemClass),
         ];
     }
 
-    /**
+    /**Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield
      * @param GridField $gridField
      * @return array
      */
