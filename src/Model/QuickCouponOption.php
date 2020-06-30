@@ -24,6 +24,13 @@ class QuickCouponOption extends DiscountCouponOption
      *
      * @var string
      */
+    private static $table_name = 'QuickCouponOption';
+
+    /**
+     * standard SS variable.
+     *
+     * @var array
+     */
     private static $defaults = [
         'ApplyPercentageToApplicableProducts' => true,
         'NumberOfTimesCouponCanBeUsed' => 1,
