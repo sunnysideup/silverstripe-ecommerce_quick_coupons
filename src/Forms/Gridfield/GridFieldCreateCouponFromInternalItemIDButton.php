@@ -58,7 +58,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
      */
     public function setFragment($fragment)
     {
-        $this->targetFragment = $targetFragment;
+        $this->targetFragment = $fragment;
         return $this;
     }
 
