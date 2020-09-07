@@ -207,7 +207,7 @@ class QuickCouponOption extends DiscountCouponOption
             ->setEmail($email)
             ->setFirstName('Coupon')
             ->setSurname('Manager')
-            ->setName('Coupon Managers')
+            ->setGroupName('Coupon Managers')
             ->setCode('couponmanagers')
             ->setPermissionCode('CMS_ACCESS_QUICK_COUPONS')
             ->setRoleTitle('Coupon Manager Privileges')
