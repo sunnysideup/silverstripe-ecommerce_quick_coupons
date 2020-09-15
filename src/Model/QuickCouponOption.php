@@ -190,7 +190,7 @@ class QuickCouponOption extends DiscountCouponOption
     {
         parent::onBeforeWrite();
         if (! $this->CreatedByID) {
-            $currentMember = Security::currentUser();
+            $currentMember = Security::getCurrentUser();
             $this->CreatedByID = $currentMember->ID;
         }
     }
