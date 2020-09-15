@@ -9,6 +9,7 @@ use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
 use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
 
@@ -189,7 +190,7 @@ class QuickCouponOption extends DiscountCouponOption
     {
         parent::onBeforeWrite();
         if (! $this->CreatedByID) {
-            $currentMember = Member::currentUser();
+            $currentMember = Security::currentUser();
             $this->CreatedByID = $currentMember->ID;
         }
     }
