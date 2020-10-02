@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "sunnysideup/ecommerce": "dev-master",
+        "sunnysideup/ecommerce": "*",
         "sunnysideup/ecommerce_discount_coupon": "dev-master",
         "silverstripe/recipe-cms": "^4.4"
     },
