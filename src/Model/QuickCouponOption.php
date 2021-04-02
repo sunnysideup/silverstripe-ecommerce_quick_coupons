@@ -186,18 +186,6 @@ class QuickCouponOption extends DiscountCouponOption
     /**
      * standard SS method
      */
-    public function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-        if (! $this->CreatedByID) {
-            $currentMember = Security::getCurrentUser();
-            $this->CreatedByID = $currentMember->ID;
-        }
-    }
-
-    /**
-     * standard SS method
-     */
     public function requireDefaultRecords()
     {
         parent::requireDefaultRecords();
@@ -214,6 +202,18 @@ class QuickCouponOption extends DiscountCouponOption
             ->setRoleTitle('Coupon Manager Privileges')
             ->setPermissionArray(['CMS_ACCESS_QuickCouponAdmin'])
             ->CreateGroupAndMember();
+    }
+
+    /**
+     * standard SS method
+     */
+    protected function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if (! $this->CreatedByID) {
+            $currentMember = Security::getCurrentUser();
+            $this->CreatedByID = $currentMember->ID;
+        }
     }
 
     /**

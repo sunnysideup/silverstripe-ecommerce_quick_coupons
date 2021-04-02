@@ -102,27 +102,24 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
     /**
      * Creates a coupon and adds the product (if it exists) using the value for InternalItemID
      *
-     * @param GridField $gridField
      * @param string $actionName Action identifier, see {@link getActions()}.
      * @param array $arguments Arguments relevant for this
      * @param array $data All form data
      */
     public function handleAction(GridField $gridField, $actionName, $arguments, $data)
     {
-        switch ($actionName) {
-            case 'createcoupon':
-                if (isset($data['InternalItemID']) && $data['InternalItemID']) {
-                    $product = Product::get()->filter(['InternalItemID' => $data['InternalItemID']])->first();
-                    if ($product) {
-                        $validLength = Config::inst()->get(QuickCouponOption::class, 'default_valid_length_in_days');
-                        $newCoupon = QuickCouponOption::create();
-                        $newCoupon->StartDate = date('Y-m-d');
-                        $newCoupon->EndDate = $validLength > 0 ? date('Y-m-d', strtotime(date('Y-m-d') . $validLength . 'days')) : '';
-                        $newCoupon->write();
-                        $newCoupon->Products()->add($product);
-                    }
+        if ($actionName === 'createcoupon') {
+            if (isset($data['InternalItemID']) && $data['InternalItemID']) {
+                $product = Product::get()->filter(['InternalItemID' => $data['InternalItemID']])->first();
+                if ($product) {
+                    $validLength = Config::inst()->get(QuickCouponOption::class, 'default_valid_length_in_days');
+                    $newCoupon = QuickCouponOption::create();
+                    $newCoupon->StartDate = date('Y-m-d');
+                    $newCoupon->EndDate = $validLength > 0 ? date('Y-m-d', strtotime(date('Y-m-d') . $validLength . 'days')) : '';
+                    $newCoupon->write();
+                    $newCoupon->Products()->add($product);
                 }
-                break;
+            }
         }
     }
 
