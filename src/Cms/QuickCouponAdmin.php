@@ -20,6 +20,7 @@ class QuickCouponAdmin extends ModelAdmin
 
     /**
      * List of all managed {@link DataObject}s in this interface.
+     *
      * @var array|string
      */
     private static $managed_models = [
@@ -48,14 +49,15 @@ class QuickCouponAdmin extends ModelAdmin
     private static $menu_icon = 'vendor/sunnysideup/ecommerce/client/images/icons/money-file.gif';
 
     /**
-     * @param int $id
+     * @param int                           $id
      * @param \SilverStripe\Forms\FieldList $fields
+     *
      * @return \SilverStripe\Forms\Form
      */
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm();
-        if ($this->modelClass === QuickCouponOption::class) {
+        if (QuickCouponOption::class === $this->modelClass) {
             if ($gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
                 if ($gridField instanceof GridField) {
                     $gridField->getConfig()->removeComponentsByType(GridFieldExportButton::class);
@@ -64,6 +66,7 @@ class QuickCouponAdmin extends ModelAdmin
                 }
             }
         }
+
         return $form;
     }
 }

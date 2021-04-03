@@ -16,8 +16,7 @@ use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *@author shane [at] sunnysideup.co.nz
- *
- **/
+ */
 class QuickCouponOption extends DiscountCouponOption
 {
     /**
@@ -38,14 +37,14 @@ class QuickCouponOption extends DiscountCouponOption
     ];
 
     /**
-     * standard SS variable
+     * standard SS variable.
      */
     private static $has_one = [
         'CreatedBy' => Member::class,
     ];
 
     /**
-     * standard SS variable
+     * standard SS variable.
      */
     private static $searchable_fields = [
         'Title' => 'PartialMatchFilter',
@@ -57,7 +56,8 @@ class QuickCouponOption extends DiscountCouponOption
     /**
      *  default number of days that a coupon will be valid for
      *  used to set value of EndDate in getCMSFields
-     *  set to -1 to disable
+     *  set to -1 to disable.
+     *
      *  @var int
      */
     private static $default_valid_length_in_days = 7;
@@ -68,7 +68,11 @@ class QuickCouponOption extends DiscountCouponOption
     private static $manager_email = '';
 
     /**
-     * standard SS method
+     * standard SS method.
+     *
+     * @param null|mixed $member
+     * @param mixed      $context
+     *
      * @return bool
      */
     public function canCreate($member = null, $context = [])
@@ -76,11 +80,16 @@ class QuickCouponOption extends DiscountCouponOption
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
         }
+
         return parent::canCreate($member);
     }
 
     /**
-     * standard SS method
+     * standard SS method.
+     *
+     * @param null|mixed $member
+     * @param mixed      $context
+     *
      * @return bool
      */
     public function canView($member = null, $context = [])
@@ -88,11 +97,16 @@ class QuickCouponOption extends DiscountCouponOption
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
         }
+
         return parent::canView($member);
     }
 
     /**
-     * standard SS method
+     * standard SS method.
+     *
+     * @param null|mixed $member
+     * @param mixed      $context
+     *
      * @return bool
      */
     public function canEdit($member = null, $context = [])
@@ -100,11 +114,14 @@ class QuickCouponOption extends DiscountCouponOption
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
         }
+
         return parent::canEdit($member);
     }
 
     /**
-     * standard SS method
+     * standard SS method.
+     *
+     * @param null|mixed $member
      *
      * @return bool
      */
@@ -116,11 +133,12 @@ class QuickCouponOption extends DiscountCouponOption
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
         }
+
         return parent::canDelete($member);
     }
 
     /**
-     * standard SS method
+     * standard SS method.
      */
     public function getCMSFields()
     {
@@ -179,7 +197,7 @@ class QuickCouponOption extends DiscountCouponOption
     }
 
     /**
-     * standard SS method
+     * standard SS method.
      */
     public function requireDefaultRecords()
     {
@@ -187,6 +205,7 @@ class QuickCouponOption extends DiscountCouponOption
         DB::alteration_message('Creating Coupon Manager Group', 'created');
         $email = Config::inst()->get(QuickCouponOption::class, 'manager_email');
         $email = $email ?: $this->getDefaultEmail();
+
         return PermissionProviderFactory::inst()
             ->setEmail($email)
             ->setFirstName('Coupon')
@@ -196,11 +215,12 @@ class QuickCouponOption extends DiscountCouponOption
             ->setPermissionCode('CMS_ACCESS_QUICK_COUPONS')
             ->setRoleTitle('Coupon Manager Privileges')
             ->setPermissionArray(['CMS_ACCESS_QuickCouponAdmin'])
-            ->CreateGroupAndMember();
+            ->CreateGroupAndMember()
+        ;
     }
 
     /**
-     * standard SS method
+     * standard SS method.
      */
     protected function onBeforeWrite()
     {
@@ -212,7 +232,7 @@ class QuickCouponOption extends DiscountCouponOption
     }
 
     /**
-     * Returns and email address based on the current domain of this website
+     * Returns and email address based on the current domain of this website.
      *
      * @return string
      */
@@ -222,6 +242,7 @@ class QuickCouponOption extends DiscountCouponOption
         $baseURL = str_replace('https://', '', $baseURL);
         $baseURL = str_replace('http://', '', $baseURL);
         $baseURL = trim($baseURL, '/');
+
         return 'coupons@' . $baseURL;
     }
 }

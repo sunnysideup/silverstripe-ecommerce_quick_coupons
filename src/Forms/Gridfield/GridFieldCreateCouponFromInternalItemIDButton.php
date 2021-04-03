@@ -20,7 +20,7 @@ use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
 class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLProvider, GridField_ActionProvider
 {
     /**
-     * Which template to use for rendering
+     * Which template to use for rendering.
      *
      * @var string
      */
@@ -54,11 +54,13 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 
     /**
      * @param string $fragment
-     * @return  $this
+     *
+     * @return $this
      */
     public function setFragment($fragment)
     {
         $this->targetFragment = $fragment;
+
         return $this;
     }
 
@@ -90,7 +92,7 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
         ];
     }
 
-    /**Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield
+    /*Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield
      * @param GridField $gridField
      * @return array
      */
@@ -100,15 +102,15 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
     }
 
     /**
-     * Creates a coupon and adds the product (if it exists) using the value for InternalItemID
+     * Creates a coupon and adds the product (if it exists) using the value for InternalItemID.
      *
-     * @param string $actionName Action identifier, see {@link getActions()}.
-     * @param array $arguments Arguments relevant for this
-     * @param array $data All form data
+     * @param string $actionName action identifier, see {@link getActions()}
+     * @param array  $arguments  Arguments relevant for this
+     * @param array  $data       All form data
      */
     public function handleAction(GridField $gridField, $actionName, $arguments, $data)
     {
-        if ($actionName === 'createcoupon') {
+        if ('createcoupon' === $actionName) {
             if (isset($data['InternalItemID']) && $data['InternalItemID']) {
                 $product = Product::get()->filter(['InternalItemID' => $data['InternalItemID']])->first();
                 if ($product) {
