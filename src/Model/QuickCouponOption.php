@@ -69,7 +69,6 @@ class QuickCouponOption extends DiscountCouponOption
 
     /**
      * standard SS method
-     * @param Member $member|null
      * @return bool
      */
     public function canCreate($member = null, $context = [])
@@ -82,7 +81,6 @@ class QuickCouponOption extends DiscountCouponOption
 
     /**
      * standard SS method
-     * @param Member $member|null
      * @return bool
      */
     public function canView($member = null, $context = [])
@@ -95,7 +93,6 @@ class QuickCouponOption extends DiscountCouponOption
 
     /**
      * standard SS method
-     * @param Member $member|null
      * @return bool
      */
     public function canEdit($member = null, $context = [])
@@ -108,8 +105,6 @@ class QuickCouponOption extends DiscountCouponOption
 
     /**
      * standard SS method
-     *
-     * @param Member $member|null
      *
      * @return bool
      */
