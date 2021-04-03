@@ -108,7 +108,7 @@ class QuickCouponOption extends DiscountCouponOption
      *
      * @return bool
      */
-    public function canDelete($member = null, $context = [])
+    public function canDelete($member = null)
     {
         if ($this->UseCount()) {
             return false;
