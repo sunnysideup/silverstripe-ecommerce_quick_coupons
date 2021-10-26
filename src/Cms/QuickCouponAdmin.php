@@ -58,7 +58,8 @@ class QuickCouponAdmin extends ModelAdmin
     {
         $form = parent::getEditForm();
         if (QuickCouponOption::class === $this->modelClass) {
-            if ($gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass))) {
+            $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass));
+            if ($gridField) {
                 if ($gridField instanceof GridField) {
                     $gridField->getConfig()->removeComponentsByType(GridFieldExportButton::class);
                     $gridField->getConfig()->removeComponentsByType(GridFieldPrintButton::class);

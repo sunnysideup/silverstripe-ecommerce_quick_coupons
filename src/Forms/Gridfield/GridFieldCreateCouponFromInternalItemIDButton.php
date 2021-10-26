@@ -83,7 +83,8 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 
         $forTemplate->Fields->push($productField);
         $forTemplate->Fields->push($addAction);
-        if ($form = $gridField->getForm()) {
+        $form = $gridField->getForm();
+        if ($form) {
             $forTemplate->Fields->setForm($form);
         }
 
