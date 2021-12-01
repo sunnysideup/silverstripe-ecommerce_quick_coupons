@@ -159,7 +159,7 @@ class QuickCouponOption extends DiscountCouponOption
         }
 
         if ($this->AddedByID) {
-            $member = Member::get()->byID($this->AddedByID);
+            $member = Member::get_by_id($this->AddedByID);
             if ($member && $member->exists()) {
                 $fields->insertBefore(
                     'UseCount',
