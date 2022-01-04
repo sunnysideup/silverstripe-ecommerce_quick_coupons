@@ -12,12 +12,13 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
 use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
+use Sunnysideup\PermissionProvider\Interfaces\PermissionProviderFactoryProvider;
 
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *@author shane [at] sunnysideup.co.nz
  */
-class QuickCouponOption extends DiscountCouponOption
+class QuickCouponOption extends DiscountCouponOption implements PermissionProviderFactoryProvider
 {
     /**
      * standard SS variable.
