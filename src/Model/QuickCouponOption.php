@@ -196,16 +196,10 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
 
         return $fields;
     }
-
-    /**
-     * standard SS method.
-     */
-    public function requireDefaultRecords()
+    public static function permission_provider_factory_runner()
     {
-        parent::requireDefaultRecords();
-        DB::alteration_message('Creating Coupon Manager Group', 'created');
         $email = Config::inst()->get(QuickCouponOption::class, 'manager_email');
-        $email = $email ?: $this->getDefaultEmail();
+        $email = $email ?: self::get_default_email();
 
         return PermissionProviderFactory::inst()
             ->setEmail($email)
@@ -218,6 +212,15 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
             ->setPermissionArray(['CMS_ACCESS_QuickCouponAdmin'])
             ->CreateGroupAndMember()
         ;
+    }
+
+    /**
+     * standard SS method.
+     */
+    public function requireDefaultRecords()
+    {
+        parent::requireDefaultRecords();
+        DB::alteration_message('Creating Coupon Manager Group', 'created');
     }
 
     /**
@@ -237,7 +240,7 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
      *
      * @return string
      */
-    private function getDefaultEmail()
+    private static function get_default_email()
     {
         $baseURL = Director::absoluteBaseURL();
         $baseURL = str_replace('https://', '', $baseURL);
