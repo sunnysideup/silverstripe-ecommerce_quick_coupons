@@ -196,6 +196,7 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
 
         return $fields;
     }
+
     public static function permission_provider_factory_runner()
     {
         $email = Config::inst()->get(QuickCouponOption::class, 'manager_email');
