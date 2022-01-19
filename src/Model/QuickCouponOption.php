@@ -180,12 +180,12 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         }
 
         $fields->insertBefore(
-            new Tab('Discount', 'Discount'),
+            new Tab('Price', 'Price'),
             'AddProductsDirectly'
         );
 
         $fields->addFieldsToTab(
-            'Root.Discount',
+            'Root.Price',
             [
                 $fields->dataFieldByName('MaximumDiscount'),
                 $fields->dataFieldByName('DiscountAbsolute'),
