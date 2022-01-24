@@ -11,9 +11,8 @@ use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
-use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
-
 use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
+use Sunnysideup\EcommerceDiscountCoupon\Model\DiscountCouponOption;
 use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
 use Sunnysideup\PermissionProvider\Interfaces\PermissionProviderFactoryProvider;
 
@@ -200,7 +199,7 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         return $fields;
     }
 
-    public static function permission_provider_factory_runner() : Group
+    public static function permission_provider_factory_runner(): Group
     {
         $email = Config::inst()->get(QuickCouponOption::class, 'manager_email');
         $email = $email ?: self::get_default_email();
