@@ -213,7 +213,6 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
             ->setGroupName('Coupon Managers')
             ->setCode('couponmanagers')
             ->setPermissionCode('CMS_ACCESS_QUICK_COUPONS')
-            ->setParentGroup('Ecommerce')
             ->setRoleTitle('Coupon Manager Privileges')
             ->setPermissionArray(['CMS_ACCESS_QuickCouponAdmin'])
             ->CreateGroupAndMember()
