@@ -169,12 +169,12 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
                     LiteralField::create(
                         'CreatedByReadOnly',
                         '<div class="field readonly">
-	                        <label class="left">Created By</label>
-	                        <div class="middleColumn">
-                            	<span class="readonly">
+                            <label class="left">Created By</label>
+                            <div class="middleColumn">
+                                <span class="readonly">
                                     ' . $member->Name . '
                                 </span>
-                        	</div>
+                            </div>
                         </div>'
                     )
                 );
