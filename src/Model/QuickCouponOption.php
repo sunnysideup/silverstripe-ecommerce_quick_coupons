@@ -247,8 +247,8 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
     private static function get_default_email()
     {
         $baseURL = Director::absoluteBaseURL();
-        $baseURL = str_replace('https://', '', $baseURL);
-        $baseURL = str_replace('http://', '', $baseURL);
+        $baseURL = str_replace('https://', '', (string) $baseURL);
+        $baseURL = str_replace('http://', '', (string) $baseURL);
         $baseURL = trim($baseURL, '/');
 
         return 'coupons@' . $baseURL;
