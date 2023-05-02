@@ -17,8 +17,10 @@ use Sunnysideup\PermissionProvider\Api\PermissionProviderFactory;
 use Sunnysideup\PermissionProvider\Interfaces\PermissionProviderFactoryProvider;
 
 /**
- *@author nicolaas [at] sunnysideup.co.nz
- *@author shane [at] sunnysideup.co.nz
+ * Class \Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption
+ *
+ * @property int $CreatedByID
+ * @method \SilverStripe\Security\Member CreatedBy()
  */
 class QuickCouponOption extends DiscountCouponOption implements PermissionProviderFactoryProvider
 {

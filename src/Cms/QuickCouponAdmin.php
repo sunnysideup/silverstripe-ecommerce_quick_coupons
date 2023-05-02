@@ -9,6 +9,10 @@ use SilverStripe\Forms\GridField\GridFieldPrintButton;
 use Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield\GridFieldCreateCouponFromInternalItemIDButton;
 use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
 
+/**
+ * Class \Sunnysideup\EcommerceQuickCoupons\Cms\QuickCouponAdmin
+ *
+ */
 class QuickCouponAdmin extends ModelAdmin
 {
     /**
