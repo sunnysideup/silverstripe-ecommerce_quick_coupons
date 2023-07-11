@@ -23,7 +23,7 @@
     "require": {
         "sunnysideup/ecommerce": "*",
         "sunnysideup/ecommerce_discount_coupon": "dev-master",
-        "silverstripe/recipe-cms": "^4.4"
+        "silverstripe/recipe-cms": "^4.0 || ^5.0"
     },
     "extra": [],
     "prefer-stable": true,
