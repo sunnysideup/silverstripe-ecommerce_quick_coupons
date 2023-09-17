@@ -184,8 +184,8 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         }
 
         $fields->insertBefore(
+            'AddProductsDirectly',
             new Tab('Price', 'Price'),
-            'AddProductsDirectly'
         );
 
         $fields->addFieldsToTab(
