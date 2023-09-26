@@ -1,0 +1,13 @@
+---
+Name: ecommerce_quick_coupons_menu
+After:
+  - '#coreconfig'
+  - '#cmsextensions'
+  - '#ecommerce'
+  - '#app'
+---
+SilverStripe\Admin\LeftAndMain:
+  menu_groups:
+    Shop:
+      children:
+        - Sunnysideup-EcommerceQuickCoupons-Cms-QuickCouponAdmin
