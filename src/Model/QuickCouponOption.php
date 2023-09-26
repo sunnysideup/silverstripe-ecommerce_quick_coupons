@@ -251,7 +251,7 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         $baseURL = Director::absoluteBaseURL();
         $baseURL = str_replace('https://', '', (string) $baseURL);
         $baseURL = str_replace('http://', '', (string) $baseURL);
-        $baseURL = trim($baseURL, '/');
+        $baseURL = trim((string) $baseURL, '/');
 
         return 'coupons@' . $baseURL;
     }
