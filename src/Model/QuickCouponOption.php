@@ -5,6 +5,7 @@ namespace Sunnysideup\EcommerceQuickCoupons\Model;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Group;
@@ -33,6 +34,13 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
 
     /**
      * standard SS variable.
+     */
+    private static $has_one = [
+        'CreatedBy' => Member::class,
+    ];
+
+    /**
+     * standard SS variable.
      *
      * @var array
      */
@@ -41,31 +49,6 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         'NumberOfTimesCouponCanBeUsed' => 1,
     ];
 
-    /**
-     * standard SS variable.
-     */
-    private static $has_one = [
-        'CreatedBy' => Member::class,
-    ];
-
-    /**
-     * standard SS variable.
-     */
-    private static $searchable_fields = [
-        'Title' => 'PartialMatchFilter',
-        'Code' => 'PartialMatchFilter',
-        'DiscountAbsolute' => 'ExactMatchFilter',
-        'DiscountPercentage' => 'ExactMatchFilter',
-    ];
-
-    /**
-     *  default number of days that a coupon will be valid for
-     *  used to set value of EndDate in getCMSFields
-     *  set to -1 to disable.
-     *
-     *  @var int
-     */
-    private static $default_valid_length_in_days = 7;
 
     /**
      *  @var string
@@ -151,52 +134,6 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
         $fields->removeByName('CreatedByID');
         $fields->removeByName('ApplyEvenWithoutCode');
         $fields->removeByName('AddProductsUsingCategories');
-
-        if (! $this->StartDate) {
-            $fields->dataFieldByName('StartDate')->setValue(date('Y-m-d'));
-        }
-
-        $validLength = Config::inst()->get(QuickCouponOption::class, 'default_valid_length_in_days');
-        if (! $this->EndDate && $validLength >= 0) {
-            $fields->dataFieldByName('EndDate')->setValue(
-                date('Y-m-d', strtotime(date('Y-m-d') . $validLength . 'days'))
-            );
-        }
-
-        if ($this->AddedByID) {
-            $member = Member::get_by_id($this->AddedByID);
-            if ($member && $member->exists()) {
-                $fields->insertBefore(
-                    'UseCount',
-                    LiteralField::create(
-                        'CreatedByReadOnly',
-                        '<div class="field readonly">
-                            <label class="left">Created By</label>
-                            <div class="middleColumn">
-                                <span class="readonly">
-                                    ' . $member->Name . '
-                                </span>
-                            </div>
-                        </div>'
-                    )
-                );
-            }
-        }
-
-        $fields->insertBefore(
-            'AddProductsDirectly',
-            new Tab('Price', 'Price'),
-        );
-
-        $fields->addFieldsToTab(
-            'Root.Price',
-            [
-                $fields->dataFieldByName('MaximumDiscount'),
-                $fields->dataFieldByName('DiscountAbsolute'),
-                $fields->dataFieldByName('DiscountPercentage'),
-                $fields->dataFieldByName('MinimumOrderSubTotalValue'),
-            ]
-        );
 
         return $fields;
     }
