@@ -1,36 +1,36 @@
 {
-    "name": "sunnysideup/ecommerce_quick_coupons",
-    "type": "silverstripe-vendormodule",
-    "description": "Allows coupons for particular products to be added quickly!",
-    "keywords": [
-        "Silverstripe-CMS",
-        "CMS",
-        "Silverstripe",
-        "ecommerce",
-        "e-commerce",
-        "xml",
-        "shop",
-        "feed"
-    ],
-    "license": "BSD-3-Clause",
-    "authors": [
-        {
-            "name": "Shane Watters",
-            "email": "shane@sunnysideup.co.nz",
-            "role": "lead developer"
-        }
-    ],
-    "require": {
-        "sunnysideup/ecommerce": "*",
-        "sunnysideup/ecommerce_discount_coupon": "dev-master",
-        "silverstripe/recipe-cms": "^4.0 || ^5.0"
-    },
-    "extra": [],
-    "prefer-stable": true,
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": {
-            "Sunnysideup\\EcommerceQuickCoupons\\": "src/"
-        }
+  "name": "sunnysideup/ecommerce_quick_coupons",
+  "type": "silverstripe-vendormodule",
+  "description": "Allows coupons for particular products to be added quickly!",
+  "keywords": [
+    "Silverstripe-CMS",
+    "CMS",
+    "Silverstripe",
+    "ecommerce",
+    "e-commerce",
+    "xml",
+    "shop",
+    "feed"
+  ],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Shane Watters",
+      "email": "shane@sunnysideup.co.nz",
+      "role": "lead developer"
     }
+  ],
+  "require": {
+    "sunnysideup/ecommerce": "5.x-dev",
+    "sunnysideup/ecommerce_discount_coupon": "5.x-dev",
+    "silverstripe/recipe-cms": "^4.0 || ^5.0"
+  },
+  "extra": [],
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Sunnysideup\\EcommerceQuickCoupons\\": "src/"
+    }
+  }
 }
