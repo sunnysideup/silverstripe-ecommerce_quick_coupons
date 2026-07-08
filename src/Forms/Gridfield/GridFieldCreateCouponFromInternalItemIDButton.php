@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Forms\Gridfield;
 
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -9,7 +10,6 @@ use SilverStripe\Forms\GridField\GridField_ActionProvider;
 use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\TextField;
-use SilverStripe\View\ArrayData;
 use Sunnysideup\Ecommerce\Pages\Product;
 use Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption;
 
@@ -32,16 +32,10 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
     protected $title = 'Create with Product';
 
     /**
-     * @return string
-     */
-    protected $targetFragment;
-
-    /**
      * @param string $targetFragment
      */
-    public function __construct($targetFragment = 'before')
+    public function __construct(protected $targetFragment = 'before')
     {
-        $this->targetFragment = $targetFragment;
     }
 
     /**
@@ -66,20 +60,14 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
 
     public function getHTMLFragments($gridField)
     {
-        $forTemplate = new ArrayData([]);
-        $forTemplate->Fields = new FieldList();
+        $forTemplate = ArrayData::create([]);
+        $forTemplate->Fields = FieldList::create();
 
         $productField = TextField::create('InternalItemID', Product::class);
         $productField->setAttribute('placeholder', 'Internal Item ID');
         $productField->setAttribute('required', true);
 
-        $addAction = new GridField_FormAction(
-            $gridField,
-            'gridfield_relationadd',
-            $this->title,
-            'createcoupon',
-            'createcoupon'
-        );
+        $addAction = GridField_FormAction::create($gridField, 'gridfield_relationadd', $this->title, 'createcoupon', 'createcoupon');
 
         $forTemplate->Fields->push($productField);
         $forTemplate->Fields->push($addAction);
@@ -112,17 +100,15 @@ class GridFieldCreateCouponFromInternalItemIDButton implements GridField_HTMLPro
      */
     public function handleAction(GridField $gridField, $actionName, $arguments, $data)
     {
-        if ('createcoupon' === $actionName) {
-            if (isset($data['InternalItemID']) && $data['InternalItemID']) {
-                $product = Product::get()->filter(['InternalItemID' => $data['InternalItemID']])->first();
-                if ($product) {
-                    $validLength = Config::inst()->get(QuickCouponOption::class, 'default_valid_length_in_days');
-                    $newCoupon = QuickCouponOption::create();
-                    $newCoupon->StartDate = date('Y-m-d');
-                    $newCoupon->EndDate = $validLength > 0 ? date('Y-m-d', strtotime(date('Y-m-d') . $validLength . 'days')) : '';
-                    $newCoupon->write();
-                    $newCoupon->Products()->add($product);
-                }
+        if ('createcoupon' === $actionName && (isset($data['InternalItemID']) && $data['InternalItemID'])) {
+            $product = Product::get()->filter(['InternalItemID' => $data['InternalItemID']])->first();
+            if ($product) {
+                $validLength = Config::inst()->get(QuickCouponOption::class, 'default_valid_length_in_days');
+                $newCoupon = QuickCouponOption::create();
+                $newCoupon->StartDate = date('Y-m-d');
+                $newCoupon->EndDate = $validLength > 0 ? date('Y-m-d', strtotime(date('Y-m-d') . $validLength . 'days')) : '';
+                $newCoupon->write();
+                $newCoupon->Products()->add($product);
             }
         }
     }

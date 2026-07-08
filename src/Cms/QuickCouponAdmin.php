@@ -2,6 +2,9 @@
 
 namespace Sunnysideup\EcommerceQuickCoupons\Cms;
 
+use Override;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldExportButton;
@@ -54,21 +57,20 @@ class QuickCouponAdmin extends ModelAdmin
 
     /**
      * @param int                           $id
-     * @param \SilverStripe\Forms\FieldList $fields
+     * @param FieldList $fields
      *
-     * @return \SilverStripe\Forms\Form
+     * @return Form
      */
+    #[Override]
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm();
         if (QuickCouponOption::class === $this->modelClass) {
             $gridField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass));
-            if ($gridField) {
-                if ($gridField instanceof GridField) {
-                    $gridField->getConfig()->removeComponentsByType(GridFieldExportButton::class);
-                    $gridField->getConfig()->removeComponentsByType(GridFieldPrintButton::class);
-                    $gridField->getConfig()->addComponent(new GridFieldCreateCouponFromInternalItemIDButton());
-                }
+            if ($gridField && $gridField instanceof GridField) {
+                $gridField->getConfig()->removeComponentsByType(GridFieldExportButton::class);
+                $gridField->getConfig()->removeComponentsByType(GridFieldPrintButton::class);
+                $gridField->getConfig()->addComponent(new GridFieldCreateCouponFromInternalItemIDButton());
             }
         }
 

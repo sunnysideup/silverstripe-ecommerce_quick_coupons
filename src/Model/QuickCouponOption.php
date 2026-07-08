@@ -19,7 +19,7 @@ use Sunnysideup\PermissionProvider\Interfaces\PermissionProviderFactoryProvider;
  * Class \Sunnysideup\EcommerceQuickCoupons\Model\QuickCouponOption
  *
  * @property int $CreatedByID
- * @method \SilverStripe\Security\Member CreatedBy()
+ * @method Member CreatedBy()
  */
 class QuickCouponOption extends DiscountCouponOption implements PermissionProviderFactoryProvider
 {
@@ -113,9 +113,10 @@ class QuickCouponOption extends DiscountCouponOption implements PermissionProvid
      */
     public function canDelete($member = null)
     {
-        if ($this->UseCount()) {
+        if ($this->UseCount() !== 0) {
             return false;
         }
+
         if (Permission::checkMember($member, 'CMS_ACCESS_QUICK_COUPONS')) {
             return true;
         }
